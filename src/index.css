@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #f8fafc;
+  background-color: #020617;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #020617;
+}
+
+a {
+  color: inherit;
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply rounded-[1.75rem] border border-white/20 bg-white/[0.12] shadow-[0_8px_32px_rgba(0,0,0,0.12)] backdrop-blur-2xl;
+  }
+
+  .glass-panel-solid {
+    @apply rounded-[1.75rem] border border-white/25 bg-white/[0.92] shadow-[0_24px_80px_-20px_rgba(15,23,42,0.35)] backdrop-blur-xl;
+  }
+
+  .text-balance-safe {
+    text-wrap: balance;
+  }
+}
