@@ -27,6 +27,8 @@ Production-style React weather dashboard powered by **[WeatherAPI.com](https://w
 
    Set `VITE_WEATHER_API_KEY` to your key.
 
+   **First load (no search yet):** the app calls WeatherAPI with **`q=auto:ip`** by default (approximate weather for the visitor’s IP). You can set **`VITE_DEFAULT_LOCATION`** to a fixed city (e.g. `Lahore`) instead. If that request fails, **`VITE_FALLBACK_LOCATION`** is used (defaults to `Lahore` in code).
+
    Optional: `VITE_FORECAST_DAYS` — default is **3** (aligned with the free tier). Paid plans support more days (e.g. `5` or `7`).
 
 4. **Run**
@@ -48,7 +50,7 @@ Production-style React weather dashboard powered by **[WeatherAPI.com](https://w
 |----------|----------|
 | `GET /v1/forecast.json` | Location `q`, `days`, `key` — returns **current** + **forecastday[]** in one response |
 
-- **Query `q`**: city name or `lat,lon` for geolocation.
+- **Query `q`**: city name, `lat,lon`, or **`auto:ip`** (IP-based location).
 - **Errors**: JSON shape `{ error: { code, message } }` is normalized in `getWeatherErrorMessage()`.
 - **Attribution**: UI includes a link to WeatherAPI.com per typical API terms.
 

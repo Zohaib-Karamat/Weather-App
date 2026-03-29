@@ -1,10 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
-import { fetchByCoords, fetchCityBundle, getWeatherErrorMessage } from "../services/weatherApi";
+import {
+  fetchByCoords,
+  fetchCityBundle,
+  fetchInitialBundle,
+  getWeatherErrorMessage,
+} from "../services/weatherApi";
 
 const emptyData = { current: null, forecast: { days: [] } };
 
-export function useWeather(defaultCity = "New York", defaultUnits = "metric") {
-  const [city, setCity] = useState(defaultCity);
+const initialQuery = import.meta.env.VITE_DEFAULT_LOCATION?.trim() || "auto:ip";
+
+/**
+ * @param {string} [defaultUnits="metric"]
+ */
+export function useWeather(defaultUnits = "metric") {
+  const [city, setCity] = useState(initialQuery);
   const [units, setUnits] = useState(defaultUnits);
   const [data, setData] = useState(emptyData);
   const [status, setStatus] = useState("idle");
@@ -51,7 +61,7 @@ export function useWeather(defaultCity = "New York", defaultUnits = "metric") {
     (async () => {
       try {
         setStatus("loading");
-        const bundle = await fetchCityBundle(defaultCity, defaultUnits);
+        const bundle = await fetchInitialBundle(defaultUnits);
         if (cancelled) return;
         setData(bundle);
         setCity(bundle.current.locationName);
@@ -68,7 +78,7 @@ export function useWeather(defaultCity = "New York", defaultUnits = "metric") {
     return () => {
       cancelled = true;
     };
-  }, [defaultCity, defaultUnits]);
+  }, [defaultUnits]);
 
   return { city, units, data, status, error, load, loadByCoords };
 }

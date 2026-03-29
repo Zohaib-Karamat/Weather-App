@@ -12,7 +12,7 @@ import { FORECAST_DAYS } from "./services/weatherApi";
 
 function App() {
   const [recent, setRecent] = useLocalStorage("recent-cities", []);
-  const { city, data, status, error, load, loadByCoords, units } = useWeather("New York", "metric");
+  const { city, data, status, error, load, loadByCoords, units } = useWeather("metric");
 
   const background = useMemo(() => {
     const code = data.current?.conditionCode ?? 1000;
