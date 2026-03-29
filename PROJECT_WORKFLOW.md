@@ -107,7 +107,7 @@ flowchart LR
 - **`load(city, units)`** — search by name (or query string WeatherAPI accepts).
 - **`loadByCoords(lat, lon, units)`** — same API, but `q` is `"lat,lon"`.
 
-On **mount**, a `useEffect` runs **`fetchInitialBundle(defaultUnits)`** once: it tries **`VITE_DEFAULT_LOCATION`** or **`auto:ip`** (WeatherAPI: weather by visitor IP), then **`VITE_FALLBACK_LOCATION`** (default `Lahore`) if needed, so the first paint shows real data without typing.
+On **mount**, a `useEffect` runs **`fetchInitialBundle(defaultUnits)`** once: it tries **`VITE_DEFAULT_LOCATION`** or **`Lahore`** by default, then **`VITE_FALLBACK_LOCATION`** (default `auto:ip`) if the primary fails, so the first paint shows real data without typing.
 
 **Interview line:** *“The hook is a small state machine: loading clears the error, success stores normalized data, error stores a message from a single `getWeatherErrorMessage` helper.”*
 
@@ -139,7 +139,7 @@ GET https://api.weatherapi.com/v1/forecast.json?key=...&q=...&days=...&aqi=no&al
 
 ### A. Open the app
 
-1. `useWeather` runs initial `fetchInitialBundle("metric")` — `auto:ip` or a configured default city, with fallback.
+1. `useWeather` runs initial `fetchInitialBundle("metric")` — `Lahore` or a configured `VITE_DEFAULT_LOCATION`, with `auto:ip` fallback.
 2. `status` → `loading` → `Loader` shows.
 3. On success: `WeatherCard` + `ForecastList` render from `data`.
 4. `pickBackground(conditionCode, isDay)` sets gradient + optional stock photo.
@@ -172,6 +172,8 @@ GET https://api.weatherapi.com/v1/forecast.json?key=...&q=...&days=...&aqi=no&al
 | **Loader** | Shown when `status === "loading"` |
 | **ErrorBanner** | Shown when `status === "error"` |
 | **ErrorBoundary** | Catches **React** errors (bugs), not failed HTTP — different from API errors |
+
+**Performance polish:** background blurs are tuned lighter, and `prefers-reduced-motion` disables animations and transitions to keep lower-end devices smooth.
 
 ---
 
