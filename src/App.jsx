@@ -63,7 +63,7 @@ function App() {
               Live
             </div>
             <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              Aurora Weather
+              SkyCast
             </h1>
             <p className="max-w-md text-base text-white/75 text-balance-safe">
               Conditions, forecasts, and clarity — tuned for quick glances on any screen.

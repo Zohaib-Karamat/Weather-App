@@ -1,4 +1,4 @@
-# Aurora Weather — End-to-End Workflow & Interview Guide
+# SkyCast — End-to-End Workflow & Interview Guide
 
 This document explains **how the app works from first load to every user action**, so you can walk interviewers through **architecture, data flow, and design decisions** clearly.
 
@@ -6,7 +6,7 @@ This document explains **how the app works from first load to every user action*
 
 ## 1. What this app is (elevator pitch)
 
-**Aurora Weather** is a React (Vite) single-page app that shows **current weather** and a **multi-day forecast** using the **WeatherAPI.com** HTTP API. It supports **city search**, **browser geolocation**, **metric/imperial units**, **recent searches** (saved in the browser), **dynamic backgrounds** driven by condition codes, and **error handling** (API errors + a React error boundary).
+**SkyCast** is a React (Vite) single-page app that shows **current weather** and a **multi-day forecast** using the **WeatherAPI.com** HTTP API. It supports **city search**, **browser geolocation**, **metric/imperial units**, **recent searches** (saved in the browser), **dynamic backgrounds** driven by condition codes, and **error handling** (API errors + a React error boundary).
 
 ---
 

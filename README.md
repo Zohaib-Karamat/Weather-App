@@ -1,4 +1,4 @@
-# Aurora Weather
+# SkyCast
 
 Production-style React weather dashboard powered by **[WeatherAPI.com](https://www.weatherapi.com/)**: city search, current conditions, multi-day forecast, geolocation, metric/imperial units, dynamic backgrounds, recent searches (local storage), loading and error states, and a React error boundary.
 
