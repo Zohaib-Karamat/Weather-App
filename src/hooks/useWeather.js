@@ -8,7 +8,7 @@ import {
 
 const emptyData = { current: null, forecast: { days: [] } };
 
-const initialQuery = import.meta.env.VITE_DEFAULT_LOCATION?.trim() || "auto:ip";
+const initialQuery = import.meta.env.VITE_DEFAULT_LOCATION?.trim() || "Lahore";
 
 /**
  * @param {string} [defaultUnits="metric"]

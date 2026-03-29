@@ -93,10 +93,10 @@ export async function fetchCityBundle(city, units = "metric") {
   return normalizeForecastResponse(raw, units);
 }
 
-/** Primary: `VITE_DEFAULT_LOCATION` or `auto:ip` (WeatherAPI: approximate location from IP). Fallback if that fails. */
+/** Primary: `VITE_DEFAULT_LOCATION` or `Lahore` by default. Fallback if that fails. */
 export async function fetchInitialBundle(units = "metric") {
-  const primary = import.meta.env.VITE_DEFAULT_LOCATION?.trim() || "auto:ip";
-  const fallback = import.meta.env.VITE_FALLBACK_LOCATION?.trim() || "Lahore";
+  const primary = import.meta.env.VITE_DEFAULT_LOCATION?.trim() || "Lahore";
+  const fallback = import.meta.env.VITE_FALLBACK_LOCATION?.trim() || "auto:ip";
 
   try {
     return await fetchCityBundle(primary, units);
